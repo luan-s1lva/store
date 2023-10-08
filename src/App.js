@@ -1,9 +1,15 @@
 import './App.css';
+import Background from './components/Background';
+import SearchBar from './components/SearchBar';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <>
-      <h1>O projeto começou</h1>
+      <Background>
+        <SearchBar />
+        <Footer />
+      </Background>
     </>
   );
 }
