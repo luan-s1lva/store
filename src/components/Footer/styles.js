@@ -34,6 +34,7 @@ export const Footer = styled.footer`
   position: fixed;
   width: 100%;
   flex-direction: column;
+  background-color: black;
 `;
 
 export const Typography = styled(TypographyMUI)`
@@ -41,15 +42,19 @@ export const Typography = styled(TypographyMUI)`
   justify-content: center;
   font-size: 1.5em;
   padding-top: 18px;
+  color: white;
 `;
 
 export const P = styled.p`
   margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 15px;
+  color: white;
 `;
 
-export const A = styled.a``;
+export const A = styled.a`
+  color: white;
+`;
 
 export const Small = styled.small`
   display: flex;

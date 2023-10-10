@@ -6,9 +6,7 @@ const Footer = () => {
     <>
       <S.Footer>
         <S.Typography>Author: Luan Silva</S.Typography>
-        <S.Typography>
-          Powered by
-        </S.Typography>
+        <S.Typography>Powered by</S.Typography>
         <S.Container>
           <S.P>
             <S.A

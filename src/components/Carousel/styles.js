@@ -3,6 +3,10 @@ import styled from "styled-components";
 import {
   Button as ButtonMUI,
   TextField as TextFieldMUI,
+  Typography as TypographyMUI,
+  Paper as PaperMUI,
+  Card as CardMUI,
+  CardMedia as CardMediaMUI,
 } from "@material-ui/core";
 
 import {
@@ -12,15 +16,25 @@ import {
 
 export const Button = styled(ButtonMUI)``;
 
+export const Card = styled(CardMUI)``;
+
+export const CardMedia = styled(CardMediaMUI)``;
+
 export const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 15px;
+`;
+
+export const Paper = styled(PaperMUI)`
+  variant: outlined;
 `;
 
 export const Link = styled.a``;
 
 export const TextField = styled(TextFieldMUI)``;
+
+export const Typography = styled(TypographyMUI)``;
 
 export const SearchIcon = styled(SearchMUI)``;
 
