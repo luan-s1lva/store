@@ -1,17 +1,11 @@
 import "./App.css";
-import Background from "./components/Background";
-import SearchBar from "./components/SearchBar";
-import Footer from "./components/Footer";
-import Carousel from "./components/Carousel";
+import Request from "./pages";
+import Main from "./templates";
 
 function App() {
   return (
     <>
-      <Background>
-        <SearchBar />
-        <Carousel />
-        <Footer />
-      </Background>
+      <Request />
     </>
   );
 }

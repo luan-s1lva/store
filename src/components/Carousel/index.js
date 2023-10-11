@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import * as S from "./styles.js";
 
@@ -9,7 +9,9 @@ const Carousel = ({ imgSource }) => {
         <S.Container>
           <S.Paper>
             <S.Card>
-              <S.CardMedia image={imgSource} />
+                {Object.keys(imgSource).map((value) => (
+                    imgSource[{value}]
+                ))}
             </S.Card>
           </S.Paper>
         </S.Container>
