@@ -9,9 +9,11 @@ const Carousel = ({ imgSource }) => {
         <S.Container>
           <S.Paper>
             <S.Card>
-                {Object.keys(imgSource).map((value) => (
-                    imgSource[{value}]
-                ))}
+              {Object.values(imgSource).map((value) => (
+                Object.keys(value).map((index) => {
+                  return(<h1>{index}</h1>);
+                })
+              ))}
             </S.Card>
           </S.Paper>
         </S.Container>
@@ -30,8 +32,8 @@ const Carousel = ({ imgSource }) => {
   );
 };
 
-Carousel.propTypes = {
-  imgSource: PropTypes.string,
-};
+// Carousel.propTypes = {
+//   imgSource: PropTypes.string,
+// };
 
 export default Carousel;

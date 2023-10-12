@@ -18,27 +18,20 @@ const Request = () => {
         axios
       .get("https://fakestoreapi.com/products")
       .then((res) => {
-        setProductData(res.data);
+        setProductData((res.data));
         filterData();
         setOpen(false);
+        
       })
-      .then((err) => {
+      .catch((err) => {
         alert(err);
       });
     } catch (error) {
-        alert(error);
+        console.log(error);
     }
   };
 
   const filterData = () => {
-    productData.map((value) => {
-      setProductsImage(value.image);
-      setCategory(value.category);
-      setDescription(value.description);
-      setTitle(value.title);
-      setPrice(value.price);
-      setRate(value.rate);
-    });
   };
 
   useEffect(() => {
@@ -48,7 +41,7 @@ const Request = () => {
   return (
     <>
       <Main
-        productsImage={productsImage}
+        productsImage={productData}
         category={category}
         description={description}
         title={title}
