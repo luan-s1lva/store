@@ -12,6 +12,7 @@ const Request = () => {
   const [price, setPrice] = useState([]);
   const [rate, setRate] = useState([]);
   const [open, setOpen] = useState(true);
+  const imagesData = [];
 
   const getProducstsData = () => {
     try {
@@ -19,9 +20,8 @@ const Request = () => {
       .get("https://fakestoreapi.com/products")
       .then((res) => {
         setProductData((res.data));
-        filterData();
         setOpen(false);
-        
+        filterData();
       })
       .catch((err) => {
         alert(err);
@@ -32,6 +32,9 @@ const Request = () => {
   };
 
   const filterData = () => {
+    (productData).map((val) => {
+      setProductsImage(val.image);
+    });
   };
 
   useEffect(() => {

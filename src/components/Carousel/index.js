@@ -1,19 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import * as S from "./styles.js";
 
-const Carousel = ({ imgSource }) => {
+const Carousel = ({ imgSource, description }) => {
+  const [images, setImages] = useState([]);
+
+  const filterData = () => {
+    Object.values(imgSource).map((value) => {
+      Object.keys(value).map((val) => {
+        if (val == "image") {
+          setImages(value[val]);
+        }
+      })
+    })
+  }
+
   return (
     <>
       {imgSource ? (
         <S.Container>
           <S.Paper>
             <S.Card>
-              {Object.values(imgSource).map((value) => (
-                Object.keys(value).map((index) => {
-                  return(<h1>{index}</h1>);
-                })
-              ))}
+              {Object.keys(imgSource).map((value) => {
+                return(
+                  <>
+                  <S.Image src={imgSource[value].image} />
+                  <S.Typography>{imgSource[value].description}</S.Typography>
+                  <br />
+                  </>
+                );
+              })}
             </S.Card>
           </S.Paper>
         </S.Container>

@@ -9,7 +9,10 @@ const Main = ({ productsImage, category, description, title, price, rate }) => {
     <>  
       <Background>
         <SearchBar />
-        <Carousel imgSource={productsImage} />
+        <Carousel 
+          imgSource={productsImage}
+          description={description} 
+        />
         <Footer />
       </Background>
     </>

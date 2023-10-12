@@ -26,6 +26,12 @@ export const Container = styled.div`
   margin-top: 15px;
 `;
 
+export const Image = styled.img`
+  height: 200px;
+  margin: auto;
+  display: flex;
+`;
+
 export const Paper = styled(PaperMUI)`
   variant: outlined;
 `;
