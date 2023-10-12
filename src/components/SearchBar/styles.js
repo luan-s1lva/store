@@ -15,7 +15,7 @@ export const Button = styled(ButtonMUI)``;
 export const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 15px;
+  margin-top: 5px;
 `;
 
 export const Link = styled.a``;

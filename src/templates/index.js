@@ -4,15 +4,12 @@ import SearchBar from "../components/SearchBar";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 
-const Main = ({ productsImage, category, description, title, price, rate }) => {
+const Main = ({ productsData }) => {
   return (
-    <>  
+    <>
       <Background>
         <SearchBar />
-        <Carousel 
-          imgSource={productsImage}
-          description={description} 
-        />
+        <Carousel productsData={productsData} />
         <Footer />
       </Background>
     </>

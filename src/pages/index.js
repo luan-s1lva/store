@@ -5,52 +5,49 @@ import * as S from "./styles";
 
 const Request = () => {
   const [productData, setProductData] = useState([]);
-  const [productsImage, setProductsImage] = useState([]);
-  const [category, setCategory] = useState([]);
-  const [description, setDescription] = useState([]);
-  const [title, setTitle] = useState([]);
-  const [price, setPrice] = useState([]);
-  const [rate, setRate] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [open, setOpen] = useState(true);
-  const imagesData = [];
 
-  const getProducstsData = () => {
+  const getAllProducstsData = () => {
     try {
-        axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        setProductData((res.data));
-        setOpen(false);
-        filterData();
-      })
-      .catch((err) => {
-        alert(err);
-      });
+      axios
+        .get("https://fakestoreapi.com/products")
+        .then((res) => {
+          setProductData(res.data);
+          setOpen(false);
+        })
+        .catch((err) => {
+          alert(err);
+        });
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   };
 
-  const filterData = () => {
-    (productData).map((val) => {
-      setProductsImage(val.image);
-    });
+  const getAllCategories = () => {
+    try {
+      axios
+        .get("https://fakestoreapi.com/products/categories")
+        .then((res) => {
+          setCategories([res.data]);
+          setOpen(false);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    getProducstsData();
+    getAllProducstsData();
+    getAllCategories();
   }, []);
 
   return (
     <>
-      <Main
-        productsImage={productData}
-        category={category}
-        description={description}
-        title={title}
-        price={price}
-        rate={rate}
-      />
+      <Main productsData={productData} />
       <S.Backdrop open={open}>
         <S.CircularProgress color="inherit" />
       </S.Backdrop>

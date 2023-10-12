@@ -1,37 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import * as S from "./styles.js";
 
-const Carousel = ({ imgSource, description }) => {
-  const [images, setImages] = useState([]);
-
-  const filterData = () => {
-    Object.values(imgSource).map((value) => {
-      Object.keys(value).map((val) => {
-        if (val == "image") {
-          setImages(value[val]);
-        }
-      })
-    })
-  }
-
+const Carousel = ({ productsData }) => {
   return (
     <>
-      {imgSource ? (
+      {productsData ? (
         <S.Container>
-          <S.Paper>
-            <S.Card>
-              {Object.keys(imgSource).map((value) => {
-                return(
-                  <>
-                  <S.Image src={imgSource[value].image} />
-                  <S.Typography>{imgSource[value].description}</S.Typography>
-                  <br />
-                  </>
-                );
-              })}
-            </S.Card>
-          </S.Paper>
+          {Object.keys(productsData).map((value) => {
+            return (
+              <>
+                <S.Paper>
+                  <S.Card>
+                    <S.Image src={productsData[value].image} />
+                    <br />
+                  </S.Card>
+                </S.Paper>
+              </>
+            );
+          })}
         </S.Container>
       ) : (
         <S.Container>
@@ -48,8 +35,8 @@ const Carousel = ({ imgSource, description }) => {
   );
 };
 
-// Carousel.propTypes = {
-//   imgSource: PropTypes.string,
-// };
+Carousel.propTypes = {
+  productsData: PropTypes.object.isRequired,
+};
 
 export default Carousel;

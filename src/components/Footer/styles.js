@@ -40,15 +40,15 @@ export const Footer = styled.footer`
 export const Typography = styled(TypographyMUI)`
   display: flex;
   justify-content: center;
-  font-size: 1.5em;
-  padding-top: 18px;
+
+  padding-top: 10px;
   color: white;
 `;
 
 export const P = styled.p`
   margin-left: 5px;
   margin-right: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   color: white;
 `;
 
