@@ -5,7 +5,6 @@ import * as S from "./styles";
 
 const Request = () => {
   const [productData, setProductData] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [open, setOpen] = useState(true);
 
   const getAllProducstsData = () => {
@@ -24,25 +23,8 @@ const Request = () => {
     }
   };
 
-  const getAllCategories = () => {
-    try {
-      axios
-        .get("https://fakestoreapi.com/products/categories")
-        .then((res) => {
-          setCategories([res.data]);
-          setOpen(false);
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     getAllProducstsData();
-    getAllCategories();
   }, []);
 
   return (
