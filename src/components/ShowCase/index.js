@@ -1,10 +1,13 @@
 import React from "react";
 import * as S from "./styles";
 
-const ShowCase = ({ categoriesData, productsData }) => {
+const ShowCase = ({ categoriesData, productsData, productsByCategory }) => {
+  const filterImages = () => {};
+
   return (
     <>
       <S.Container>
+        {Object.keys(productsByCategory)}
         {categoriesData.map((value) => (
           <S.Paper>
             <S.Card>
