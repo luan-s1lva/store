@@ -9,17 +9,16 @@ const MainPage = () => {
   const [productsByCategory, setProductsByCategory] = useState([]);
   const [open, setOpen] = useState(true);
 
-  const getAllCategories = () => {
+  const getAllCategories = async () => {
     try {
-      axios
-        .get("https://fakestoreapi.com/products/categories")
-        .then((res) => {
-          setCategories(res.data);
-          setOpen(false);
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      const response = await axios.get(
+        "https://fakestoreapi.com/products/categories",
+      );
+
+      setCategories(response.data);
+      setOpen(false);
+
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -41,29 +40,28 @@ const MainPage = () => {
     }
   };
 
-  const getProductsByCategory = () => {
+  const getProductsByCategory = async () => {
+    const categories = await getAllCategories();
     const arr = [];
+    categories.map((value) => {
+      arr.push(`https://fakestoreapi.com/products/category/${value}`);
+    });
+
     try {
-        for (let i = 0; i < categories.length; i++) {
-          axios
-            .get("https://fakestoreapi.com/products/category/"+categories[i])
-            .then((res) => {
-              arr.push([res.data]);
-              setProductsByCategory(arr);
-              setOpen(false);
-            })
-            .catch((err) => {
-              alert(err);
-            });
-        }
+      axios.all(
+        arr.map(async (val) => {
+          const response = await axios.get(val);
+
+          setProductsByCategory(response.data);
+        }),
+      );
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getAllCategories();
-    getAllProducstsData();
+    // getAllCategories();
     getProductsByCategory();
   }, []);
 

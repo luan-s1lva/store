@@ -2,17 +2,22 @@ import React from "react";
 import * as S from "./styles";
 
 const ShowCase = ({ categoriesData, productsData, productsByCategory }) => {
-  const filterImages = () => {};
-
   return (
     <>
+      {Object.keys(productsByCategory).map((val) => {
+        console.log(productsByCategory[val].image);
+        return (
+          <>
+            <S.Image src={productsByCategory[val].image} />
+          </>
+        );
+      })}
       <S.Container>
-        {Object.keys(productsByCategory)}
         {categoriesData.map((value) => (
           <S.Paper>
             <S.Card>
               <S.Typography>{value}</S.Typography>
-              {Object.keys(productsData).map((val) => {
+              {/* {Object.keys(productsData).map((val) => {
                 if (productsData[val].category === value) {
                   return (
                     <>
@@ -21,7 +26,7 @@ const ShowCase = ({ categoriesData, productsData, productsByCategory }) => {
                     </>
                   );
                 }
-              })}
+              })} */}
             </S.Card>
           </S.Paper>
         ))}
