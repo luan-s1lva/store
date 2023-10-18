@@ -5,7 +5,6 @@ import * as S from "./styles";
 
 const MainPage = () => {
   const [categories, setCategories] = useState([]);
-  const [productData, setProductData] = useState([]);
   const [productsByCategory, setProductsByCategory] = useState([]);
   const [open, setOpen] = useState(true);
 
@@ -24,25 +23,11 @@ const MainPage = () => {
     }
   };
 
-  const getAllProducstsData = () => {
-    try {
-      axios
-        .get("https://fakestoreapi.com/products")
-        .then((res) => {
-          setProductData(res.data);
-          setOpen(false);
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const getProductsByCategory = async () => {
     const categories = await getAllCategories();
     const arr = [];
+    const arr2 = [];
+
     categories.map((value) => {
       arr.push(`https://fakestoreapi.com/products/category/${value}`);
     });
@@ -50,18 +35,19 @@ const MainPage = () => {
     try {
       axios.all(
         arr.map(async (val) => {
-          const response = await axios.get(val);
-
-          setProductsByCategory(response.data);
+          const response = await axios.get(val)
+          
+          arr2.push(response.data);
         }),
       );
     } catch (error) {
       console.log(error);
     }
+
+    setProductsByCategory(arr2);
   };
 
   useEffect(() => {
-    // getAllCategories();
     getProductsByCategory();
   }, []);
 
@@ -69,7 +55,6 @@ const MainPage = () => {
     <>
       <MainTemplate
         categoriesData={categories}
-        productsData={productData}
         productsByCategory={productsByCategory}
       />
       <S.Backdrop open={open}>

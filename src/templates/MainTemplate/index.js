@@ -4,14 +4,13 @@ import SearchBar from "../../components/SearchBar";
 import Footer from "../../components/Footer";
 import Background from "../../components/Background";
 
-const MainTemplate = ({ categoriesData, productsData, productsByCategory }) => {
+const MainTemplate = ({ categoriesData, productsByCategory }) => {
   return (
     <>
       <Background>
         <SearchBar />
         <ShowCase
           categoriesData={categoriesData}
-          productsData={productsData}
           productsByCategory={productsByCategory}
         />
         <Footer />
