@@ -24,7 +24,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 15px;
+  margin: 15px;
 `;
 
 export const Image = styled.img`

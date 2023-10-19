@@ -5,7 +5,7 @@ import * as S from "./styles";
 
 const MainPage = () => {
   const [categories, setCategories] = useState([]);
-  const [productsByCategory, setProductsByCategory] = useState([]);
+  const [productsData, setProductsData] = useState([]);
   const [open, setOpen] = useState(true);
 
   const getAllCategories = async () => {
@@ -14,48 +14,38 @@ const MainPage = () => {
         "https://fakestoreapi.com/products/categories",
       );
 
-      setCategories(response.data);
-      setOpen(false);
-
-      return response.data;
+      if (response.status == 200) {
+        setCategories(response.data);
+        setOpen(false);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getProductsByCategory = async () => {
-    const categories = await getAllCategories();
-    const arr = [];
-    const arr2 = [];
-
-    categories.map((value) => {
-      arr.push(`https://fakestoreapi.com/products/category/${value}`);
-    });
-
+  const getAllProducstsData = async () => {
     try {
-      axios.all(
-        arr.map(async (val) => {
-          const response = await axios.get(val)
-          
-          arr2.push(response.data);
-        }),
-      );
+      const response = await axios.get("https://fakestoreapi.com/products");
+      
+      if (response.status == 200) {
+        setProductsData(response.data);
+        setOpen(false);
+      }
     } catch (error) {
       console.log(error);
     }
-
-    setProductsByCategory(arr2);
   };
 
   useEffect(() => {
-    getProductsByCategory();
+    getAllCategories();
+    getAllProducstsData();
   }, []);
 
   return (
     <>
       <MainTemplate
         categoriesData={categories}
-        productsByCategory={productsByCategory}
+        productsData={productsData}
       />
       <S.Backdrop open={open}>
         <S.CircularProgress color="inherit" />
