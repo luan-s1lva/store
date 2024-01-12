@@ -5,22 +5,24 @@ const ShowCase = ({ categoriesData, productsData }) => {
   return (
     <>
       <S.Container>
-        {categoriesData.map((valueCategory) => (
-          <S.Paper>
-            <S.Card>
-              <S.Typography>{valueCategory}</S.Typography>
-              {productsData.map((value) => {
-                if (value.category == valueCategory) {
-                  return(
-                    <>
-                    <S.Image src={value.image} />
-                    </>
-                  )
-                }
-              })}
-            </S.Card>
-          </S.Paper>
-        ))}
+        <S.Grid container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+          spacing={3}
+        >
+        {productsData.map((value) => {
+            return(
+              <>
+              <S.Grid item xs={4}>
+              <S.Card>
+                <S.Image src={value.image} />
+                </S.Card>
+              </S.Grid>
+              </>
+            )
+        })}
+        </S.Grid>
       </S.Container>
     </>
   );

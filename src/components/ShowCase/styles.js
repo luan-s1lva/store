@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 import {
   Button as ButtonMUI,
-  TextField as TextFieldMUI,
-  Typography as TypographyMUI,
-  Paper as PaperMUI,
   Card as CardMUI,
   CardMedia as CardMediaMUI,
+  Grid as GridMUI,
+  Paper as PaperMUI,
+  TextField as TextFieldMUI,
+  Typography as TypographyMUI,  
 } from "@material-ui/core";
 
 import {
@@ -27,8 +28,12 @@ export const Container = styled.div`
   margin: 15px;
 `;
 
+export const Grid = styled(GridMUI)`
+  
+`;
+
 export const Image = styled.img`
-  height: 200px;
+  height: 150px;
   margin: auto;
   display: flex;
 `;
