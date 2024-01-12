@@ -2,14 +2,17 @@ import React from "react";
 import * as S from "./styles";
 import Input from "../Buttons/Input";
 
-const SearchBar = () => {
+const SearchBar = ({ categoriesData,handleReload }) => {
   return (
     <>
       <S.Container>
         <S.Link>
           <S.Button>Fazer Login</S.Button>
         </S.Link>
-        <Input />
+        <Input 
+          handleReload={handleReload}
+          categoriesData={categoriesData}
+        />
         <S.Button>
           <S.ShoppingCartIcon />
         </S.Button>

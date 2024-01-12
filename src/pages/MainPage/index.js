@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { responseAllProducts } from "../../services/allProducts";
 import MainTemplate from "../../templates/MainTemplate";
+import { responseAllCategories } from "../../services/categories";
+import { responseAllProducts } from "../../services/allProducts";
 import * as S from "./styles";
+import { responseSingleCategoryProducts } from "../../services/singleProduct";
 
 const MainPage = () => {
   const [categories, setCategories] = useState([]);
@@ -16,13 +18,27 @@ const MainPage = () => {
     }, [responseAllProducts]
   );
 
+  const onGetAllCategories = async () => {
+    const getAllCategories = await responseAllCategories();
+
+    setCategories(getAllCategories);
+  };
+
+  const handleReload = async (newData) => {
+    const getProductsByCategory = await responseSingleCategoryProducts(newData);
+
+    setProductsData(getProductsByCategory);
+  }
+
   useEffect(() => {
     onGetAllProductsData();
+    onGetAllCategories();
   }, []);
 
   return (
     <>
       <MainTemplate
+        handleReload={handleReload}
         categoriesData={categories}
         productsData={productsData}
       />
