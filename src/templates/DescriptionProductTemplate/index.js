@@ -1,10 +1,14 @@
 import React from "react";
+import Background from "../../components/Background";
+import ProductDetailer from "../../components/ProductDetailer";
 import * as S from "./styles";
 
-const DescriptionProductTemplate = () => {
+const DescriptionProductTemplate = ({ productData }) => {
   return (
     <>
-      <h1>Oi</h1>
+      <Background>
+        <ProductDetailer productData={productData} />
+      </Background>
     </>
   );
 };

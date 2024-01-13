@@ -9,7 +9,9 @@ const SearchBar = ({ categoriesData, handleReload }) => {
         <S.Link>
           <S.Button>Fazer Login</S.Button>
         </S.Link>
-        <Input handleReload={handleReload} categoriesData={categoriesData} />
+        {window.location.pathname === "/" && (
+          <Input handleReload={handleReload} categoriesData={categoriesData} />
+        )}
         <S.Button>
           <S.ShoppingCartIcon />
         </S.Button>

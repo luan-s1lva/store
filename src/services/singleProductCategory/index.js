@@ -1,9 +1,9 @@
 import apiClient from "../apiClient";
 
-export const responseSingleProduct = async (id) => {
+export const responseSingleCategoryProducts = async (keyword) => {
   try {
     const response = await apiClient.get(
-      `https://fakestoreapi.com/products/${id}`,
+      `https://fakestoreapi.com/products/category/${keyword}`,
     );
 
     return response;

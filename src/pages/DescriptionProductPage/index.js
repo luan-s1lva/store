@@ -1,10 +1,10 @@
 import React from "react";
 import DescriptionProductTemplate from "../../templates/DescriptionProductTemplate";
 
-const DescriptionProductPage = () => {
+const DescriptionProductPage = ({ productData }) => {
   return (
     <>
-      <DescriptionProductTemplate />
+      <DescriptionProductTemplate productData={productData} />
     </>
   );
 };

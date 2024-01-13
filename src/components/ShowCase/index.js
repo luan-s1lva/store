@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 const ShowCase = ({ productsData, handleProductId }) => {
   return (
@@ -16,9 +17,11 @@ const ShowCase = ({ productsData, handleProductId }) => {
             return (
               <>
                 <S.Grid item xs={4}>
-                  <S.Card>
+                  {/* <Link to="/product"> */}
+                  <S.Card onClick={() => handleProductId(value)}>
                     <S.Image src={value.image} />
                   </S.Card>
+                  {/* </Link> */}
                 </S.Grid>
               </>
             );

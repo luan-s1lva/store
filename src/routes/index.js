@@ -3,12 +3,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import DescriptionProductPage from "../pages/DescriptionProductPage";
 import Layout from "../layout";
-import { responseSingleCategoryProducts } from "../services/singleProduct";
+import { responseSingleCategoryProducts } from "../services/singleProductCategory";
 import { responseAllCategories } from "../services/categories";
 import { responseAllProducts } from "../services/allProducts";
+import { responseSingleProduct } from "../services/singleProduct";
 
 const Router = () => {
-  const [productId, setProductId] = useState([]);
+  const [productId, setProductId] = useState({});
   const [productsData, setProductsData] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -24,8 +25,10 @@ const Router = () => {
     setProductsData(getAllProductsData);
   };
 
-  const handleProductId = (event) => {
-    setProductId(event.target.value);
+  const handleProductId = async (event) => {
+    const getSingleProduct = await responseSingleProduct(event.id);
+
+    setProductId(getSingleProduct);
   };
 
   const handleReload = async (newData) => {
@@ -58,13 +61,11 @@ const Router = () => {
               />
             }
           />
-          <Route 
-            path={`/product`} 
+          <Route
+            path={`/teste`}
             element={
               <Layout
-                content={
-                  <DescriptionProductPage />
-                }
+                content={<DescriptionProductPage productData={productId} />}
                 categories={categories}
                 handleReload={handleReload}
               />

@@ -1,6 +1,5 @@
 import React from "react";
 import ShowCase from "../../components/ShowCase";
-import Footer from "../../components/Footer";
 import Background from "../../components/Background";
 
 const MainTemplate = ({ productsData, handleProductId }) => {
@@ -11,7 +10,6 @@ const MainTemplate = ({ productsData, handleProductId }) => {
           handleProductId={handleProductId}
           productsData={productsData}
         />
-        <Footer />
       </Background>
     </>
   );
