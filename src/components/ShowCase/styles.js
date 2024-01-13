@@ -7,7 +7,7 @@ import {
   Grid as GridMUI,
   Paper as PaperMUI,
   TextField as TextFieldMUI,
-  Typography as TypographyMUI,  
+  Typography as TypographyMUI,
 } from "@material-ui/core";
 
 import {
@@ -26,11 +26,10 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: row;
   margin: 15px;
+  padding-bottom: 150px;
 `;
 
-export const Grid = styled(GridMUI)`
-  
-`;
+export const Grid = styled(GridMUI)``;
 
 export const Image = styled.img`
   height: 150px;

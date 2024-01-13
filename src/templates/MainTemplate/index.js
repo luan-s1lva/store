@@ -1,19 +1,14 @@
 import React from "react";
 import ShowCase from "../../components/ShowCase";
-import SearchBar from "../../components/SearchBar";
 import Footer from "../../components/Footer";
 import Background from "../../components/Background";
 
-const MainTemplate = ({ categoriesData,productsData,productsByCategory,handleReload }) => {
+const MainTemplate = ({ productsData, handleProductId }) => {
   return (
     <>
       <Background>
-        <SearchBar 
-          handleReload={handleReload}
-          categoriesData={categoriesData}
-        />
         <ShowCase
-          categoriesData={categoriesData}
+          handleProductId={handleProductId}
           productsData={productsData}
         />
         <Footer />

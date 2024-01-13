@@ -13,9 +13,12 @@ import { Search as SearchMUI } from "@material-ui/icons";
 
 export const Button = styled(ButtonMUI)``;
 
+export const SubmitButton = styled.button``;
+
 export const Container = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 15px;
 `;
 

@@ -14,8 +14,10 @@ export const Button = styled(ButtonMUI)``;
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   margin-top: 5px;
+  margin-bottom: 25px;
 `;
 
 export const Link = styled.a``;
