@@ -3,11 +3,11 @@ import Background from "../../components/Background";
 import ProductDetailer from "../../components/ProductDetailer";
 import * as S from "./styles";
 
-const DescriptionProductTemplate = ({ productData }) => {
+const DescriptionProductTemplate = ({ productId }) => {
   return (
     <>
       <Background>
-        <ProductDetailer productData={productData} />
+        <ProductDetailer productId={productId} />
       </Background>
     </>
   );

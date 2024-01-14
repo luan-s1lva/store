@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./styles";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
-const ShowCase = ({ productsData, handleProductId }) => {
+const ShowCase = ({ productsData, handlePageChange }) => {
   return (
     <>
       <S.Container>
@@ -17,11 +17,11 @@ const ShowCase = ({ productsData, handleProductId }) => {
             return (
               <>
                 <S.Grid item xs={4}>
-                  {/* <Link to="/product"> */}
-                  <S.Card onClick={() => handleProductId(value)}>
+                  <Link to={`/product/${value.id}`}>
+                  <S.Card onClick={() => handlePageChange(value.id)}>
                     <S.Image src={value.image} />
                   </S.Card>
-                  {/* </Link> */}
+                  </Link>
                 </S.Grid>
               </>
             );

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import MainTemplate from "../../templates/MainTemplate";
 import * as S from "./styles";
 
-const MainPage = ({ handleProductId, productsData }) => {
+const MainPage = ({ handlePageChange, productsData }) => {
   const [open, setOpen] = useState(true);
 
   return (
     <>
       <MainTemplate
-        handleProductId={handleProductId}
+        handlePageChange={handlePageChange}
         productsData={productsData}
       />
       {/* <S.Backdrop open={open}>

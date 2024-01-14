@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, redirect, Navigate } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import DescriptionProductPage from "../pages/DescriptionProductPage";
 import Layout from "../layout";
@@ -9,7 +9,7 @@ import { responseAllProducts } from "../services/allProducts";
 import { responseSingleProduct } from "../services/singleProduct";
 
 const Router = () => {
-  const [productId, setProductId] = useState({});
+  const [productId, setProductId] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -25,10 +25,8 @@ const Router = () => {
     setProductsData(getAllProductsData);
   };
 
-  const handleProductId = async (event) => {
-    const getSingleProduct = await responseSingleProduct(event.id);
-
-    setProductId(getSingleProduct);
+  const handlePageChange = async (id) => {
+    setProductId(id);
   };
 
   const handleReload = async (newData) => {
@@ -53,7 +51,7 @@ const Router = () => {
                 content={
                   <MainPage
                     productsData={productsData}
-                    handleProductId={handleProductId}
+                    handlePageChange={handlePageChange}
                   />
                 }
                 categories={categories}
@@ -62,11 +60,10 @@ const Router = () => {
             }
           />
           <Route
-            path={`/teste`}
+            path={"/product/:id"}
             element={
               <Layout
-                content={<DescriptionProductPage productData={productId} />}
-                categories={categories}
+                content={<DescriptionProductPage productId={productId} />}
                 handleReload={handleReload}
               />
             }
