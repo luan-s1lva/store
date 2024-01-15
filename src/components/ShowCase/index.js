@@ -18,9 +18,9 @@ const ShowCase = ({ productsData, handlePageChange }) => {
               <>
                 <S.Grid item xs={4}>
                   <Link to={`/product/${value.id}`}>
-                  <S.Card onClick={() => handlePageChange(value.id)}>
-                    <S.Image src={value.image} />
-                  </S.Card>
+                    <S.Card onClick={() => handlePageChange(value.id)}>
+                      <S.Image src={value.image} />
+                    </S.Card>
                   </Link>
                 </S.Grid>
               </>

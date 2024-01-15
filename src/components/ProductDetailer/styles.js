@@ -32,7 +32,7 @@ export const Container = styled.div`
 export const Grid = styled(GridMUI)``;
 
 export const Image = styled.img`
-  height: 150px;
+  height: 350px;
   margin: auto;
   display: flex;
 `;

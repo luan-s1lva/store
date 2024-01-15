@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, redirect, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  redirect,
+  Navigate,
+} from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import DescriptionProductPage from "../pages/DescriptionProductPage";
 import Layout from "../layout";
