@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import { responseSingleProduct } from "../../services/singleProduct";
 import RatingStars from "../RatingStars";
+import { Link } from "react-router-dom";
 
 const ProductDetailer = ({ productId }) => {
   const [productData, setProductData] = useState([]);
@@ -37,9 +38,10 @@ const ProductDetailer = ({ productId }) => {
               <S.Typography>Title: {productData.title}</S.Typography>
               {productData.rating ? (
                 <>
-                
-                <S.Typography>Rate: {productData.rating.rate}</S.Typography>
-                <RatingStars />
+                  <S.Container>
+                    <S.Typography>Rate: {productData.rating.rate}</S.Typography>
+                    <RatingStars rate={productData.rating.rate} />
+                  </S.Container>
                 </>
               ) : (
                 <S.Typography>Rate: -</S.Typography>
@@ -47,6 +49,14 @@ const ProductDetailer = ({ productId }) => {
               <S.Typography>R${productData.price}</S.Typography>
               <S.Typography>Category: {productData.category}</S.Typography>
               <S.Typography>Desc: {productData.description}</S.Typography>
+
+              <Link to="/cart">
+                <S.Button>Mandar para o carrinho</S.Button>
+              </Link>
+
+              <Link to="/">
+                <S.Button>Voltar</S.Button>
+              </Link>
             </S.Grid>
           </S.Grid>
         </S.Card>

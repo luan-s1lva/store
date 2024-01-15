@@ -25,14 +25,13 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin: auto;
-  width: 80%;
+  align-items: center;
 `;
 
 export const Grid = styled(GridMUI)``;
 
 export const Image = styled.img`
-  height: 350px;
+  height: 150px;
   margin: auto;
   display: flex;
 `;
@@ -50,7 +49,6 @@ export const TextField = styled(TextFieldMUI)``;
 export const Typography = styled(TypographyMUI)`
   display: flex;
   justify-content: center;
-  padding-right: 5px;
 `;
 
 export const SearchIcon = styled(SearchMUI)``;

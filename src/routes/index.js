@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  redirect,
-  Navigate,
-} from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import DescriptionProductPage from "../pages/DescriptionProductPage";
 import Layout from "../layout";
@@ -13,11 +7,14 @@ import { responseSingleCategoryProducts } from "../services/singleProductCategor
 import { responseAllCategories } from "../services/categories";
 import { responseAllProducts } from "../services/allProducts";
 import { responseSingleProduct } from "../services/singleProduct";
+import CartPage from "../pages/CartPage";
 
 const Router = () => {
   const [productId, setProductId] = useState([]);
   const [productsData, setProductsData] = useState([]);
+  const [cartProductData, setCartProductData] = useState({});
   const [categories, setCategories] = useState([]);
+  var arr = [];  
 
   const onGetAllCategories = async () => {
     const getAllCategories = await responseAllCategories();
@@ -41,6 +38,13 @@ const Router = () => {
     setProductsData(getProductsByCategory);
   };
 
+  const handleCartMotion = (productId,quantity) => {
+    setCartProductData({"productId": productId, "quantity": quantity});
+    arr.push({"productId": productId, "quantity": quantity});
+
+    console.log(arr);
+  }
+
   useEffect(() => {
     onGetAllCategories();
     onGetAllProductsData();
@@ -56,8 +60,10 @@ const Router = () => {
               <Layout
                 content={
                   <MainPage
+                    cartProductData={cartProductData}
                     productsData={productsData}
                     handlePageChange={handlePageChange}
+                    handleCartMotion={handleCartMotion}
                   />
                 }
                 categories={categories}
@@ -70,10 +76,10 @@ const Router = () => {
             element={
               <Layout
                 content={<DescriptionProductPage productId={productId} />}
-                handleReload={handleReload}
               />
             }
           />
+          <Route path={"/cart"} element={<Layout content={<CartPage />} />} />
         </Routes>
       </BrowserRouter>
     </>

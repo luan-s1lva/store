@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import * as S from "./styles";
-import { Link, Navigate } from "react-router-dom";
 
-const ShowCase = ({ productsData, handlePageChange }) => {
+const ShowCase = ({ productsData, handlePageChange, handleCartMotion, cartProductData }) => {
   return (
     <>
+    <p>{cartProductData.productId}</p>
       <S.Container>
         <S.Grid
           container
@@ -17,11 +18,12 @@ const ShowCase = ({ productsData, handlePageChange }) => {
             return (
               <>
                 <S.Grid item xs={4}>
-                  <Link to={`/product/${value.id}`}>
-                    <S.Card onClick={() => handlePageChange(value.id)}>
+                  <S.Card onClick={() => handlePageChange(value.id)}>
+                    <Link to={`/product/${value.id}`}>
                       <S.Image src={value.image} />
-                    </S.Card>
-                  </Link>
+                    </Link>
+                    <S.Button onClick={() => handleCartMotion(value.id,1)}>COMPRAR</S.Button>
+                  </S.Card>
                 </S.Grid>
               </>
             );
